@@ -1,0 +1,4590 @@
+@import url("https://fonts.googleapis.com/css?family=Inconsolata:400,700");
+/* in seconds */
+html, body {
+  height: 100%;
+  font-family: Inconsolata, Courier, monospace;
+  font-size: 10px;
+}
+
+/* Pieces for coloured board */
+.piece {
+  position: absolute;
+  height: 2.1em;
+  width: 2.1em;
+  border-radius: 50px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  text-align: center;
+}
+.piece p {
+  margin-top: 0.45em;
+  font-size: 11px;
+}
+.piece.piece-black {
+  background: radial-gradient(circle at 60%, #aaa, #000, #000);
+  color: #fff;
+}
+.piece.piece-white {
+  background: radial-gradient(circle at 60%, #fff, #aaa, #aaa);
+  color: #000;
+}
+.piece.letter {
+  background-color: burlywood;
+  box-shadow: none;
+}
+.piece.letter p {
+  font-size: 13px;
+  font-weight: bold;
+  margin-top: 2px;
+}
+
+/* End pieces for coloured board */
+.board-19 {
+  width: 39.7em;
+  height: 39.7em;
+  background-size: 2.2em 2.2em, 2.2em 2.2em, 13.2em 13.2em;
+  border-style: solid;
+  border-width: 1.5em;
+}
+.board-19 .row-19 {
+  top: -1em;
+}
+.board-19 .row-18 {
+  top: 1.2em;
+}
+.board-19 .row-17 {
+  top: 3.4em;
+}
+.board-19 .row-16 {
+  top: 5.6em;
+}
+.board-19 .row-15 {
+  top: 7.8em;
+}
+.board-19 .row-14 {
+  top: 10em;
+}
+.board-19 .row-13 {
+  top: 12.2em;
+}
+.board-19 .row-12 {
+  top: 14.4em;
+}
+.board-19 .row-11 {
+  top: 16.6em;
+}
+.board-19 .row-10 {
+  top: 18.8em;
+}
+.board-19 .row-9 {
+  top: 21em;
+}
+.board-19 .row-8 {
+  top: 23.2em;
+}
+.board-19 .row-7 {
+  top: 25.4em;
+}
+.board-19 .row-6 {
+  top: 27.6em;
+}
+.board-19 .row-5 {
+  top: 29.8em;
+}
+.board-19 .row-4 {
+  top: 32em;
+}
+.board-19 .row-3 {
+  top: 34.2em;
+}
+.board-19 .row-2 {
+  top: 36.4em;
+}
+.board-19 .row-1 {
+  top: 38.6em;
+}
+
+.board-default {
+  position: relative;
+  background-color: burlywood;
+  background-image: linear-gradient(black 0.1em, transparent 0), linear-gradient(90deg, black 0.1em, transparent 0), radial-gradient(#000000 0.3em, rgba(0, 0, 0, 0) 0%);
+  border-color: burlywood;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7);
+  margin: 0 auto;
+}
+
+.board-coordinates {
+  border-width: 3.5em;
+}
+
+.board-white {
+  position: relative;
+  background-color: white;
+  background-image: linear-gradient(black 0.1em, transparent 0), linear-gradient(90deg, black 0.1em, transparent 0), radial-gradient(#000000 0.3em, rgba(0, 0, 0, 0) 0%);
+  border-color: white;
+  margin: 0 auto;
+}
+
+.col-coordinates-top {
+  position: absolute;
+  width: 110%;
+  margin-top: -2.8em;
+  margin-left: -1.4em;
+}
+.col-coordinates-top span {
+  margin-left: 1.2em;
+}
+
+.col-coordinates-bottom {
+  position: absolute;
+  width: 110%;
+  margin-top: 41.5em;
+  margin-left: -1.4em;
+}
+.col-coordinates-bottom span {
+  margin-left: 1.2em;
+}
+
+.row-coordinates-left {
+  position: absolute;
+  margin-left: -2.8em;
+  margin-top: -1.5em;
+}
+.row-coordinates-left p {
+  padding-top: .1em;
+}
+
+.row-coordinates-right {
+  position: absolute;
+  margin-left: 41.5em;
+  margin-top: -1.5em;
+}
+.row-coordinates-right p {
+  text-align: right;
+  padding-top: .1em;
+}
+
+.col-a {
+  left: -1em;
+}
+
+.col-b {
+  left: 1.2em;
+}
+
+.col-c {
+  left: 3.4em;
+}
+
+.col-d {
+  left: 5.6em;
+}
+
+.col-e {
+  left: 7.8em;
+}
+
+.col-f {
+  left: 10em;
+}
+
+.col-g {
+  left: 12.2em;
+}
+
+.col-h {
+  left: 14.4em;
+}
+
+.col-j {
+  left: 16.6em;
+}
+
+.col-k {
+  left: 18.8em;
+}
+
+.col-l {
+  left: 21em;
+}
+
+.col-m {
+  left: 23.2em;
+}
+
+.col-n {
+  left: 25.4em;
+}
+
+.col-o {
+  left: 27.6em;
+}
+
+.col-p {
+  left: 29.8em;
+}
+
+.col-q {
+  left: 32em;
+}
+
+.col-r {
+  left: 34.2em;
+}
+
+.col-s {
+  left: 36.4em;
+}
+
+.col-t {
+  left: 38.6em;
+}
+
+#play-1 {
+  animation: play .1s step-end;
+  animation-delay: 0.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-2 {
+  animation: play .1s step-end;
+  animation-delay: 1.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-3 {
+  animation: play .1s step-end;
+  animation-delay: 2.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-4 {
+  animation: play .1s step-end;
+  animation-delay: 3.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-5 {
+  animation: play .1s step-end;
+  animation-delay: 4s;
+  animation-fill-mode: backwards;
+}
+
+#play-6 {
+  animation: play .1s step-end;
+  animation-delay: 4.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-7 {
+  animation: play .1s step-end;
+  animation-delay: 5.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-8 {
+  animation: play .1s step-end;
+  animation-delay: 6.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-9 {
+  animation: play .1s step-end;
+  animation-delay: 7.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-10 {
+  animation: play .1s step-end;
+  animation-delay: 8s;
+  animation-fill-mode: backwards;
+}
+
+#play-11 {
+  animation: play .1s step-end;
+  animation-delay: 8.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-12 {
+  animation: play .1s step-end;
+  animation-delay: 9.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-13 {
+  animation: play .1s step-end;
+  animation-delay: 10.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-14 {
+  animation: play .1s step-end;
+  animation-delay: 11.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-15 {
+  animation: play .1s step-end;
+  animation-delay: 12s;
+  animation-fill-mode: backwards;
+}
+
+#play-16 {
+  animation: play .1s step-end;
+  animation-delay: 12.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-17 {
+  animation: play .1s step-end;
+  animation-delay: 13.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-18 {
+  animation: play .1s step-end;
+  animation-delay: 14.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-19 {
+  animation: play .1s step-end;
+  animation-delay: 15.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-20 {
+  animation: play .1s step-end;
+  animation-delay: 16s;
+  animation-fill-mode: backwards;
+}
+
+#play-21 {
+  animation: play .1s step-end;
+  animation-delay: 16.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-22 {
+  animation: play .1s step-end;
+  animation-delay: 17.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-23 {
+  animation: play .1s step-end;
+  animation-delay: 18.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-24 {
+  animation: play .1s step-end;
+  animation-delay: 19.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-25 {
+  animation: play .1s step-end;
+  animation-delay: 20s;
+  animation-fill-mode: backwards;
+}
+
+#play-26 {
+  animation: play .1s step-end;
+  animation-delay: 20.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-27 {
+  animation: play .1s step-end;
+  animation-delay: 21.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-28 {
+  animation: play .1s step-end;
+  animation-delay: 22.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-29 {
+  animation: play .1s step-end;
+  animation-delay: 23.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-30 {
+  animation: play .1s step-end;
+  animation-delay: 24s;
+  animation-fill-mode: backwards;
+}
+
+#play-31 {
+  animation: play .1s step-end;
+  animation-delay: 24.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-32 {
+  animation: play .1s step-end;
+  animation-delay: 25.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-33 {
+  animation: play .1s step-end;
+  animation-delay: 26.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-34 {
+  animation: play .1s step-end;
+  animation-delay: 27.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-35 {
+  animation: play .1s step-end;
+  animation-delay: 28s;
+  animation-fill-mode: backwards;
+}
+
+#play-36 {
+  animation: play .1s step-end;
+  animation-delay: 28.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-37 {
+  animation: play .1s step-end;
+  animation-delay: 29.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-38 {
+  animation: play .1s step-end;
+  animation-delay: 30.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-39 {
+  animation: play .1s step-end;
+  animation-delay: 31.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-40 {
+  animation: play .1s step-end;
+  animation-delay: 32s;
+  animation-fill-mode: backwards;
+}
+
+#play-41 {
+  animation: play .1s step-end;
+  animation-delay: 32.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-42 {
+  animation: play .1s step-end;
+  animation-delay: 33.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-43 {
+  animation: play .1s step-end;
+  animation-delay: 34.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-44 {
+  animation: play .1s step-end;
+  animation-delay: 35.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-45 {
+  animation: play .1s step-end;
+  animation-delay: 36s;
+  animation-fill-mode: backwards;
+}
+
+#play-46 {
+  animation: play .1s step-end;
+  animation-delay: 36.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-47 {
+  animation: play .1s step-end;
+  animation-delay: 37.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-48 {
+  animation: play .1s step-end;
+  animation-delay: 38.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-49 {
+  animation: play .1s step-end;
+  animation-delay: 39.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-50 {
+  animation: play .1s step-end;
+  animation-delay: 40s;
+  animation-fill-mode: backwards;
+}
+
+#play-51 {
+  animation: play .1s step-end;
+  animation-delay: 40.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-52 {
+  animation: play .1s step-end;
+  animation-delay: 41.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-53 {
+  animation: play .1s step-end;
+  animation-delay: 42.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-54 {
+  animation: play .1s step-end;
+  animation-delay: 43.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-55 {
+  animation: play .1s step-end;
+  animation-delay: 44s;
+  animation-fill-mode: backwards;
+}
+
+#play-56 {
+  animation: play .1s step-end;
+  animation-delay: 44.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-57 {
+  animation: play .1s step-end;
+  animation-delay: 45.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-58 {
+  animation: play .1s step-end;
+  animation-delay: 46.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-59 {
+  animation: play .1s step-end;
+  animation-delay: 47.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-60 {
+  animation: play .1s step-end;
+  animation-delay: 48s;
+  animation-fill-mode: backwards;
+}
+
+#play-61 {
+  animation: play .1s step-end;
+  animation-delay: 48.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-62 {
+  animation: play .1s step-end;
+  animation-delay: 49.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-63 {
+  animation: play .1s step-end;
+  animation-delay: 50.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-64 {
+  animation: play .1s step-end;
+  animation-delay: 51.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-65 {
+  animation: play .1s step-end;
+  animation-delay: 52s;
+  animation-fill-mode: backwards;
+}
+
+#play-66 {
+  animation: play .1s step-end;
+  animation-delay: 52.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-67 {
+  animation: play .1s step-end;
+  animation-delay: 53.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-68 {
+  animation: play .1s step-end;
+  animation-delay: 54.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-69 {
+  animation: play .1s step-end;
+  animation-delay: 55.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-70 {
+  animation: play .1s step-end;
+  animation-delay: 56s;
+  animation-fill-mode: backwards;
+}
+
+#play-71 {
+  animation: play .1s step-end;
+  animation-delay: 56.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-72 {
+  animation: play .1s step-end;
+  animation-delay: 57.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-73 {
+  animation: play .1s step-end;
+  animation-delay: 58.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-74 {
+  animation: play .1s step-end;
+  animation-delay: 59.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-75 {
+  animation: play .1s step-end;
+  animation-delay: 60s;
+  animation-fill-mode: backwards;
+}
+
+#play-76 {
+  animation: play .1s step-end;
+  animation-delay: 60.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-77 {
+  animation: play .1s step-end;
+  animation-delay: 61.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-78 {
+  animation: play .1s step-end;
+  animation-delay: 62.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-79 {
+  animation: play .1s step-end;
+  animation-delay: 63.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-80 {
+  animation: play .1s step-end;
+  animation-delay: 64s;
+  animation-fill-mode: backwards;
+}
+
+#play-81 {
+  animation: play .1s step-end;
+  animation-delay: 64.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-82 {
+  animation: play .1s step-end;
+  animation-delay: 65.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-83 {
+  animation: play .1s step-end;
+  animation-delay: 66.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-84 {
+  animation: play .1s step-end;
+  animation-delay: 67.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-85 {
+  animation: play .1s step-end;
+  animation-delay: 68s;
+  animation-fill-mode: backwards;
+}
+
+#play-86 {
+  animation: play .1s step-end;
+  animation-delay: 68.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-87 {
+  animation: play .1s step-end;
+  animation-delay: 69.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-88 {
+  animation: play .1s step-end;
+  animation-delay: 70.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-89 {
+  animation: play .1s step-end;
+  animation-delay: 71.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-90 {
+  animation: play .1s step-end;
+  animation-delay: 72s;
+  animation-fill-mode: backwards;
+}
+
+#play-91 {
+  animation: play .1s step-end;
+  animation-delay: 72.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-92 {
+  animation: play .1s step-end;
+  animation-delay: 73.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-93 {
+  animation: play .1s step-end;
+  animation-delay: 74.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-94 {
+  animation: play .1s step-end;
+  animation-delay: 75.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-95 {
+  animation: play .1s step-end;
+  animation-delay: 76s;
+  animation-fill-mode: backwards;
+}
+
+#play-96 {
+  animation: play .1s step-end;
+  animation-delay: 76.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-97 {
+  animation: play .1s step-end;
+  animation-delay: 77.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-98 {
+  animation: play .1s step-end;
+  animation-delay: 78.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-99 {
+  animation: play .1s step-end;
+  animation-delay: 79.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-100 {
+  animation: play .1s step-end;
+  animation-delay: 80s;
+  animation-fill-mode: backwards;
+}
+
+#play-101 {
+  animation: play .1s step-end;
+  animation-delay: 80.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-102 {
+  animation: play .1s step-end;
+  animation-delay: 81.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-103 {
+  animation: play .1s step-end;
+  animation-delay: 82.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-104 {
+  animation: play .1s step-end;
+  animation-delay: 83.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-105 {
+  animation: play .1s step-end;
+  animation-delay: 84s;
+  animation-fill-mode: backwards;
+}
+
+#play-106 {
+  animation: play .1s step-end;
+  animation-delay: 84.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-107 {
+  animation: play .1s step-end;
+  animation-delay: 85.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-108 {
+  animation: play .1s step-end;
+  animation-delay: 86.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-109 {
+  animation: play .1s step-end;
+  animation-delay: 87.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-110 {
+  animation: play .1s step-end;
+  animation-delay: 88s;
+  animation-fill-mode: backwards;
+}
+
+#play-111 {
+  animation: play .1s step-end;
+  animation-delay: 88.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-112 {
+  animation: play .1s step-end;
+  animation-delay: 89.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-113 {
+  animation: play .1s step-end;
+  animation-delay: 90.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-114 {
+  animation: play .1s step-end;
+  animation-delay: 91.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-115 {
+  animation: play .1s step-end;
+  animation-delay: 92s;
+  animation-fill-mode: backwards;
+}
+
+#play-116 {
+  animation: play .1s step-end;
+  animation-delay: 92.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-117 {
+  animation: play .1s step-end;
+  animation-delay: 93.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-118 {
+  animation: play .1s step-end;
+  animation-delay: 94.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-119 {
+  animation: play .1s step-end;
+  animation-delay: 95.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-120 {
+  animation: play .1s step-end;
+  animation-delay: 96s;
+  animation-fill-mode: backwards;
+}
+
+#play-121 {
+  animation: play .1s step-end;
+  animation-delay: 96.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-122 {
+  animation: play .1s step-end;
+  animation-delay: 97.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-123 {
+  animation: play .1s step-end;
+  animation-delay: 98.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-124 {
+  animation: play .1s step-end;
+  animation-delay: 99.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-125 {
+  animation: play .1s step-end;
+  animation-delay: 100s;
+  animation-fill-mode: backwards;
+}
+
+#play-126 {
+  animation: play .1s step-end;
+  animation-delay: 100.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-127 {
+  animation: play .1s step-end;
+  animation-delay: 101.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-128 {
+  animation: play .1s step-end;
+  animation-delay: 102.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-129 {
+  animation: play .1s step-end;
+  animation-delay: 103.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-130 {
+  animation: play .1s step-end;
+  animation-delay: 104s;
+  animation-fill-mode: backwards;
+}
+
+#play-131 {
+  animation: play .1s step-end;
+  animation-delay: 104.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-132 {
+  animation: play .1s step-end;
+  animation-delay: 105.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-133 {
+  animation: play .1s step-end;
+  animation-delay: 106.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-134 {
+  animation: play .1s step-end;
+  animation-delay: 107.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-135 {
+  animation: play .1s step-end;
+  animation-delay: 108s;
+  animation-fill-mode: backwards;
+}
+
+#play-136 {
+  animation: play .1s step-end;
+  animation-delay: 108.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-137 {
+  animation: play .1s step-end;
+  animation-delay: 109.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-138 {
+  animation: play .1s step-end;
+  animation-delay: 110.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-139 {
+  animation: play .1s step-end;
+  animation-delay: 111.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-140 {
+  animation: play .1s step-end;
+  animation-delay: 112s;
+  animation-fill-mode: backwards;
+}
+
+#play-141 {
+  animation: play .1s step-end;
+  animation-delay: 112.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-142 {
+  animation: play .1s step-end;
+  animation-delay: 113.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-143 {
+  animation: play .1s step-end;
+  animation-delay: 114.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-144 {
+  animation: play .1s step-end;
+  animation-delay: 115.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-145 {
+  animation: play .1s step-end;
+  animation-delay: 116s;
+  animation-fill-mode: backwards;
+}
+
+#play-146 {
+  animation: play .1s step-end;
+  animation-delay: 116.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-147 {
+  animation: play .1s step-end;
+  animation-delay: 117.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-148 {
+  animation: play .1s step-end;
+  animation-delay: 118.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-149 {
+  animation: play .1s step-end;
+  animation-delay: 119.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-150 {
+  animation: play .1s step-end;
+  animation-delay: 120s;
+  animation-fill-mode: backwards;
+}
+
+#play-151 {
+  animation: play .1s step-end;
+  animation-delay: 120.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-152 {
+  animation: play .1s step-end;
+  animation-delay: 121.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-153 {
+  animation: play .1s step-end;
+  animation-delay: 122.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-154 {
+  animation: play .1s step-end;
+  animation-delay: 123.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-155 {
+  animation: play .1s step-end;
+  animation-delay: 124s;
+  animation-fill-mode: backwards;
+}
+
+#play-156 {
+  animation: play .1s step-end;
+  animation-delay: 124.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-157 {
+  animation: play .1s step-end;
+  animation-delay: 125.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-158 {
+  animation: play .1s step-end;
+  animation-delay: 126.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-159 {
+  animation: play .1s step-end;
+  animation-delay: 127.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-160 {
+  animation: play .1s step-end;
+  animation-delay: 128s;
+  animation-fill-mode: backwards;
+}
+
+#play-161 {
+  animation: play .1s step-end;
+  animation-delay: 128.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-162 {
+  animation: play .1s step-end;
+  animation-delay: 129.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-163 {
+  animation: play .1s step-end;
+  animation-delay: 130.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-164 {
+  animation: play .1s step-end;
+  animation-delay: 131.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-165 {
+  animation: play .1s step-end;
+  animation-delay: 132s;
+  animation-fill-mode: backwards;
+}
+
+#play-166 {
+  animation: play .1s step-end;
+  animation-delay: 132.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-167 {
+  animation: play .1s step-end;
+  animation-delay: 133.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-168 {
+  animation: play .1s step-end;
+  animation-delay: 134.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-169 {
+  animation: play .1s step-end;
+  animation-delay: 135.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-170 {
+  animation: play .1s step-end;
+  animation-delay: 136s;
+  animation-fill-mode: backwards;
+}
+
+#play-171 {
+  animation: play .1s step-end;
+  animation-delay: 136.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-172 {
+  animation: play .1s step-end;
+  animation-delay: 137.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-173 {
+  animation: play .1s step-end;
+  animation-delay: 138.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-174 {
+  animation: play .1s step-end;
+  animation-delay: 139.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-175 {
+  animation: play .1s step-end;
+  animation-delay: 140s;
+  animation-fill-mode: backwards;
+}
+
+#play-176 {
+  animation: play .1s step-end;
+  animation-delay: 140.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-177 {
+  animation: play .1s step-end;
+  animation-delay: 141.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-178 {
+  animation: play .1s step-end;
+  animation-delay: 142.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-179 {
+  animation: play .1s step-end;
+  animation-delay: 143.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-180 {
+  animation: play .1s step-end;
+  animation-delay: 144s;
+  animation-fill-mode: backwards;
+}
+
+#play-181 {
+  animation: play .1s step-end;
+  animation-delay: 144.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-182 {
+  animation: play .1s step-end;
+  animation-delay: 145.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-183 {
+  animation: play .1s step-end;
+  animation-delay: 146.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-184 {
+  animation: play .1s step-end;
+  animation-delay: 147.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-185 {
+  animation: play .1s step-end;
+  animation-delay: 148s;
+  animation-fill-mode: backwards;
+}
+
+#play-186 {
+  animation: play .1s step-end;
+  animation-delay: 148.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-187 {
+  animation: play .1s step-end;
+  animation-delay: 149.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-188 {
+  animation: play .1s step-end;
+  animation-delay: 150.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-189 {
+  animation: play .1s step-end;
+  animation-delay: 151.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-190 {
+  animation: play .1s step-end;
+  animation-delay: 152s;
+  animation-fill-mode: backwards;
+}
+
+#play-191 {
+  animation: play .1s step-end;
+  animation-delay: 152.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-192 {
+  animation: play .1s step-end;
+  animation-delay: 153.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-193 {
+  animation: play .1s step-end;
+  animation-delay: 154.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-194 {
+  animation: play .1s step-end;
+  animation-delay: 155.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-195 {
+  animation: play .1s step-end;
+  animation-delay: 156s;
+  animation-fill-mode: backwards;
+}
+
+#play-196 {
+  animation: play .1s step-end;
+  animation-delay: 156.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-197 {
+  animation: play .1s step-end;
+  animation-delay: 157.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-198 {
+  animation: play .1s step-end;
+  animation-delay: 158.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-199 {
+  animation: play .1s step-end;
+  animation-delay: 159.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-200 {
+  animation: play .1s step-end;
+  animation-delay: 160s;
+  animation-fill-mode: backwards;
+}
+
+#play-201 {
+  animation: play .1s step-end;
+  animation-delay: 160.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-202 {
+  animation: play .1s step-end;
+  animation-delay: 161.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-203 {
+  animation: play .1s step-end;
+  animation-delay: 162.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-204 {
+  animation: play .1s step-end;
+  animation-delay: 163.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-205 {
+  animation: play .1s step-end;
+  animation-delay: 164s;
+  animation-fill-mode: backwards;
+}
+
+#play-206 {
+  animation: play .1s step-end;
+  animation-delay: 164.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-207 {
+  animation: play .1s step-end;
+  animation-delay: 165.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-208 {
+  animation: play .1s step-end;
+  animation-delay: 166.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-209 {
+  animation: play .1s step-end;
+  animation-delay: 167.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-210 {
+  animation: play .1s step-end;
+  animation-delay: 168s;
+  animation-fill-mode: backwards;
+}
+
+#play-211 {
+  animation: play .1s step-end;
+  animation-delay: 168.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-212 {
+  animation: play .1s step-end;
+  animation-delay: 169.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-213 {
+  animation: play .1s step-end;
+  animation-delay: 170.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-214 {
+  animation: play .1s step-end;
+  animation-delay: 171.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-215 {
+  animation: play .1s step-end;
+  animation-delay: 172s;
+  animation-fill-mode: backwards;
+}
+
+#play-216 {
+  animation: play .1s step-end;
+  animation-delay: 172.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-217 {
+  animation: play .1s step-end;
+  animation-delay: 173.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-218 {
+  animation: play .1s step-end;
+  animation-delay: 174.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-219 {
+  animation: play .1s step-end;
+  animation-delay: 175.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-220 {
+  animation: play .1s step-end;
+  animation-delay: 176s;
+  animation-fill-mode: backwards;
+}
+
+#play-221 {
+  animation: play .1s step-end;
+  animation-delay: 176.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-222 {
+  animation: play .1s step-end;
+  animation-delay: 177.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-223 {
+  animation: play .1s step-end;
+  animation-delay: 178.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-224 {
+  animation: play .1s step-end;
+  animation-delay: 179.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-225 {
+  animation: play .1s step-end;
+  animation-delay: 180s;
+  animation-fill-mode: backwards;
+}
+
+#play-226 {
+  animation: play .1s step-end;
+  animation-delay: 180.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-227 {
+  animation: play .1s step-end;
+  animation-delay: 181.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-228 {
+  animation: play .1s step-end;
+  animation-delay: 182.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-229 {
+  animation: play .1s step-end;
+  animation-delay: 183.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-230 {
+  animation: play .1s step-end;
+  animation-delay: 184s;
+  animation-fill-mode: backwards;
+}
+
+#play-231 {
+  animation: play .1s step-end;
+  animation-delay: 184.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-232 {
+  animation: play .1s step-end;
+  animation-delay: 185.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-233 {
+  animation: play .1s step-end;
+  animation-delay: 186.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-234 {
+  animation: play .1s step-end;
+  animation-delay: 187.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-235 {
+  animation: play .1s step-end;
+  animation-delay: 188s;
+  animation-fill-mode: backwards;
+}
+
+#play-236 {
+  animation: play .1s step-end;
+  animation-delay: 188.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-237 {
+  animation: play .1s step-end;
+  animation-delay: 189.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-238 {
+  animation: play .1s step-end;
+  animation-delay: 190.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-239 {
+  animation: play .1s step-end;
+  animation-delay: 191.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-240 {
+  animation: play .1s step-end;
+  animation-delay: 192s;
+  animation-fill-mode: backwards;
+}
+
+#play-241 {
+  animation: play .1s step-end;
+  animation-delay: 192.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-242 {
+  animation: play .1s step-end;
+  animation-delay: 193.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-243 {
+  animation: play .1s step-end;
+  animation-delay: 194.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-244 {
+  animation: play .1s step-end;
+  animation-delay: 195.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-245 {
+  animation: play .1s step-end;
+  animation-delay: 196s;
+  animation-fill-mode: backwards;
+}
+
+#play-246 {
+  animation: play .1s step-end;
+  animation-delay: 196.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-247 {
+  animation: play .1s step-end;
+  animation-delay: 197.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-248 {
+  animation: play .1s step-end;
+  animation-delay: 198.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-249 {
+  animation: play .1s step-end;
+  animation-delay: 199.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-250 {
+  animation: play .1s step-end;
+  animation-delay: 200s;
+  animation-fill-mode: backwards;
+}
+
+#play-251 {
+  animation: play .1s step-end;
+  animation-delay: 200.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-252 {
+  animation: play .1s step-end;
+  animation-delay: 201.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-253 {
+  animation: play .1s step-end;
+  animation-delay: 202.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-254 {
+  animation: play .1s step-end;
+  animation-delay: 203.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-255 {
+  animation: play .1s step-end;
+  animation-delay: 204s;
+  animation-fill-mode: backwards;
+}
+
+#play-256 {
+  animation: play .1s step-end;
+  animation-delay: 204.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-257 {
+  animation: play .1s step-end;
+  animation-delay: 205.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-258 {
+  animation: play .1s step-end;
+  animation-delay: 206.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-259 {
+  animation: play .1s step-end;
+  animation-delay: 207.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-260 {
+  animation: play .1s step-end;
+  animation-delay: 208s;
+  animation-fill-mode: backwards;
+}
+
+#play-261 {
+  animation: play .1s step-end;
+  animation-delay: 208.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-262 {
+  animation: play .1s step-end;
+  animation-delay: 209.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-263 {
+  animation: play .1s step-end;
+  animation-delay: 210.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-264 {
+  animation: play .1s step-end;
+  animation-delay: 211.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-265 {
+  animation: play .1s step-end;
+  animation-delay: 212s;
+  animation-fill-mode: backwards;
+}
+
+#play-266 {
+  animation: play .1s step-end;
+  animation-delay: 212.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-267 {
+  animation: play .1s step-end;
+  animation-delay: 213.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-268 {
+  animation: play .1s step-end;
+  animation-delay: 214.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-269 {
+  animation: play .1s step-end;
+  animation-delay: 215.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-270 {
+  animation: play .1s step-end;
+  animation-delay: 216s;
+  animation-fill-mode: backwards;
+}
+
+#play-271 {
+  animation: play .1s step-end;
+  animation-delay: 216.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-272 {
+  animation: play .1s step-end;
+  animation-delay: 217.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-273 {
+  animation: play .1s step-end;
+  animation-delay: 218.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-274 {
+  animation: play .1s step-end;
+  animation-delay: 219.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-275 {
+  animation: play .1s step-end;
+  animation-delay: 220s;
+  animation-fill-mode: backwards;
+}
+
+#play-276 {
+  animation: play .1s step-end;
+  animation-delay: 220.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-277 {
+  animation: play .1s step-end;
+  animation-delay: 221.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-278 {
+  animation: play .1s step-end;
+  animation-delay: 222.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-279 {
+  animation: play .1s step-end;
+  animation-delay: 223.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-280 {
+  animation: play .1s step-end;
+  animation-delay: 224s;
+  animation-fill-mode: backwards;
+}
+
+#play-281 {
+  animation: play .1s step-end;
+  animation-delay: 224.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-282 {
+  animation: play .1s step-end;
+  animation-delay: 225.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-283 {
+  animation: play .1s step-end;
+  animation-delay: 226.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-284 {
+  animation: play .1s step-end;
+  animation-delay: 227.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-285 {
+  animation: play .1s step-end;
+  animation-delay: 228s;
+  animation-fill-mode: backwards;
+}
+
+#play-286 {
+  animation: play .1s step-end;
+  animation-delay: 228.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-287 {
+  animation: play .1s step-end;
+  animation-delay: 229.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-288 {
+  animation: play .1s step-end;
+  animation-delay: 230.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-289 {
+  animation: play .1s step-end;
+  animation-delay: 231.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-290 {
+  animation: play .1s step-end;
+  animation-delay: 232s;
+  animation-fill-mode: backwards;
+}
+
+#play-291 {
+  animation: play .1s step-end;
+  animation-delay: 232.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-292 {
+  animation: play .1s step-end;
+  animation-delay: 233.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-293 {
+  animation: play .1s step-end;
+  animation-delay: 234.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-294 {
+  animation: play .1s step-end;
+  animation-delay: 235.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-295 {
+  animation: play .1s step-end;
+  animation-delay: 236s;
+  animation-fill-mode: backwards;
+}
+
+#play-296 {
+  animation: play .1s step-end;
+  animation-delay: 236.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-297 {
+  animation: play .1s step-end;
+  animation-delay: 237.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-298 {
+  animation: play .1s step-end;
+  animation-delay: 238.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-299 {
+  animation: play .1s step-end;
+  animation-delay: 239.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-300 {
+  animation: play .1s step-end;
+  animation-delay: 240s;
+  animation-fill-mode: backwards;
+}
+
+#play-301 {
+  animation: play .1s step-end;
+  animation-delay: 240.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-302 {
+  animation: play .1s step-end;
+  animation-delay: 241.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-303 {
+  animation: play .1s step-end;
+  animation-delay: 242.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-304 {
+  animation: play .1s step-end;
+  animation-delay: 243.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-305 {
+  animation: play .1s step-end;
+  animation-delay: 244s;
+  animation-fill-mode: backwards;
+}
+
+#play-306 {
+  animation: play .1s step-end;
+  animation-delay: 244.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-307 {
+  animation: play .1s step-end;
+  animation-delay: 245.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-308 {
+  animation: play .1s step-end;
+  animation-delay: 246.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-309 {
+  animation: play .1s step-end;
+  animation-delay: 247.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-310 {
+  animation: play .1s step-end;
+  animation-delay: 248s;
+  animation-fill-mode: backwards;
+}
+
+#play-311 {
+  animation: play .1s step-end;
+  animation-delay: 248.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-312 {
+  animation: play .1s step-end;
+  animation-delay: 249.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-313 {
+  animation: play .1s step-end;
+  animation-delay: 250.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-314 {
+  animation: play .1s step-end;
+  animation-delay: 251.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-315 {
+  animation: play .1s step-end;
+  animation-delay: 252s;
+  animation-fill-mode: backwards;
+}
+
+#play-316 {
+  animation: play .1s step-end;
+  animation-delay: 252.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-317 {
+  animation: play .1s step-end;
+  animation-delay: 253.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-318 {
+  animation: play .1s step-end;
+  animation-delay: 254.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-319 {
+  animation: play .1s step-end;
+  animation-delay: 255.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-320 {
+  animation: play .1s step-end;
+  animation-delay: 256s;
+  animation-fill-mode: backwards;
+}
+
+#play-321 {
+  animation: play .1s step-end;
+  animation-delay: 256.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-322 {
+  animation: play .1s step-end;
+  animation-delay: 257.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-323 {
+  animation: play .1s step-end;
+  animation-delay: 258.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-324 {
+  animation: play .1s step-end;
+  animation-delay: 259.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-325 {
+  animation: play .1s step-end;
+  animation-delay: 260s;
+  animation-fill-mode: backwards;
+}
+
+#play-326 {
+  animation: play .1s step-end;
+  animation-delay: 260.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-327 {
+  animation: play .1s step-end;
+  animation-delay: 261.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-328 {
+  animation: play .1s step-end;
+  animation-delay: 262.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-329 {
+  animation: play .1s step-end;
+  animation-delay: 263.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-330 {
+  animation: play .1s step-end;
+  animation-delay: 264s;
+  animation-fill-mode: backwards;
+}
+
+#play-331 {
+  animation: play .1s step-end;
+  animation-delay: 264.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-332 {
+  animation: play .1s step-end;
+  animation-delay: 265.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-333 {
+  animation: play .1s step-end;
+  animation-delay: 266.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-334 {
+  animation: play .1s step-end;
+  animation-delay: 267.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-335 {
+  animation: play .1s step-end;
+  animation-delay: 268s;
+  animation-fill-mode: backwards;
+}
+
+#play-336 {
+  animation: play .1s step-end;
+  animation-delay: 268.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-337 {
+  animation: play .1s step-end;
+  animation-delay: 269.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-338 {
+  animation: play .1s step-end;
+  animation-delay: 270.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-339 {
+  animation: play .1s step-end;
+  animation-delay: 271.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-340 {
+  animation: play .1s step-end;
+  animation-delay: 272s;
+  animation-fill-mode: backwards;
+}
+
+#play-341 {
+  animation: play .1s step-end;
+  animation-delay: 272.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-342 {
+  animation: play .1s step-end;
+  animation-delay: 273.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-343 {
+  animation: play .1s step-end;
+  animation-delay: 274.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-344 {
+  animation: play .1s step-end;
+  animation-delay: 275.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-345 {
+  animation: play .1s step-end;
+  animation-delay: 276s;
+  animation-fill-mode: backwards;
+}
+
+#play-346 {
+  animation: play .1s step-end;
+  animation-delay: 276.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-347 {
+  animation: play .1s step-end;
+  animation-delay: 277.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-348 {
+  animation: play .1s step-end;
+  animation-delay: 278.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-349 {
+  animation: play .1s step-end;
+  animation-delay: 279.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-350 {
+  animation: play .1s step-end;
+  animation-delay: 280s;
+  animation-fill-mode: backwards;
+}
+
+#play-351 {
+  animation: play .1s step-end;
+  animation-delay: 280.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-352 {
+  animation: play .1s step-end;
+  animation-delay: 281.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-353 {
+  animation: play .1s step-end;
+  animation-delay: 282.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-354 {
+  animation: play .1s step-end;
+  animation-delay: 283.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-355 {
+  animation: play .1s step-end;
+  animation-delay: 284s;
+  animation-fill-mode: backwards;
+}
+
+#play-356 {
+  animation: play .1s step-end;
+  animation-delay: 284.8s;
+  animation-fill-mode: backwards;
+}
+
+#play-357 {
+  animation: play .1s step-end;
+  animation-delay: 285.6s;
+  animation-fill-mode: backwards;
+}
+
+#play-358 {
+  animation: play .1s step-end;
+  animation-delay: 286.4s;
+  animation-fill-mode: backwards;
+}
+
+#play-359 {
+  animation: play .1s step-end;
+  animation-delay: 287.2s;
+  animation-fill-mode: backwards;
+}
+
+#play-360 {
+  animation: play .1s step-end;
+  animation-delay: 288s;
+  animation-fill-mode: backwards;
+}
+
+#play-361 {
+  animation: play .1s step-end;
+  animation-delay: 288.8s;
+  animation-fill-mode: backwards;
+}
+
+#capture-1 {
+  animation: capture 1s ease-out;
+  animation-delay: 0.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-2 {
+  animation: capture 1s ease-out;
+  animation-delay: 1.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-3 {
+  animation: capture 1s ease-out;
+  animation-delay: 2.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-4 {
+  animation: capture 1s ease-out;
+  animation-delay: 3.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-5 {
+  animation: capture 1s ease-out;
+  animation-delay: 4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-6 {
+  animation: capture 1s ease-out;
+  animation-delay: 4.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-7 {
+  animation: capture 1s ease-out;
+  animation-delay: 5.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-8 {
+  animation: capture 1s ease-out;
+  animation-delay: 6.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-9 {
+  animation: capture 1s ease-out;
+  animation-delay: 7.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-10 {
+  animation: capture 1s ease-out;
+  animation-delay: 8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-11 {
+  animation: capture 1s ease-out;
+  animation-delay: 8.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-12 {
+  animation: capture 1s ease-out;
+  animation-delay: 9.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-13 {
+  animation: capture 1s ease-out;
+  animation-delay: 10.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-14 {
+  animation: capture 1s ease-out;
+  animation-delay: 11.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-15 {
+  animation: capture 1s ease-out;
+  animation-delay: 12s;
+  animation-fill-mode: forwards;
+}
+
+#capture-16 {
+  animation: capture 1s ease-out;
+  animation-delay: 12.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-17 {
+  animation: capture 1s ease-out;
+  animation-delay: 13.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-18 {
+  animation: capture 1s ease-out;
+  animation-delay: 14.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-19 {
+  animation: capture 1s ease-out;
+  animation-delay: 15.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-20 {
+  animation: capture 1s ease-out;
+  animation-delay: 16s;
+  animation-fill-mode: forwards;
+}
+
+#capture-21 {
+  animation: capture 1s ease-out;
+  animation-delay: 16.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-22 {
+  animation: capture 1s ease-out;
+  animation-delay: 17.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-23 {
+  animation: capture 1s ease-out;
+  animation-delay: 18.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-24 {
+  animation: capture 1s ease-out;
+  animation-delay: 19.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-25 {
+  animation: capture 1s ease-out;
+  animation-delay: 20s;
+  animation-fill-mode: forwards;
+}
+
+#capture-26 {
+  animation: capture 1s ease-out;
+  animation-delay: 20.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-27 {
+  animation: capture 1s ease-out;
+  animation-delay: 21.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-28 {
+  animation: capture 1s ease-out;
+  animation-delay: 22.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-29 {
+  animation: capture 1s ease-out;
+  animation-delay: 23.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-30 {
+  animation: capture 1s ease-out;
+  animation-delay: 24s;
+  animation-fill-mode: forwards;
+}
+
+#capture-31 {
+  animation: capture 1s ease-out;
+  animation-delay: 24.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-32 {
+  animation: capture 1s ease-out;
+  animation-delay: 25.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-33 {
+  animation: capture 1s ease-out;
+  animation-delay: 26.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-34 {
+  animation: capture 1s ease-out;
+  animation-delay: 27.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-35 {
+  animation: capture 1s ease-out;
+  animation-delay: 28s;
+  animation-fill-mode: forwards;
+}
+
+#capture-36 {
+  animation: capture 1s ease-out;
+  animation-delay: 28.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-37 {
+  animation: capture 1s ease-out;
+  animation-delay: 29.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-38 {
+  animation: capture 1s ease-out;
+  animation-delay: 30.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-39 {
+  animation: capture 1s ease-out;
+  animation-delay: 31.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-40 {
+  animation: capture 1s ease-out;
+  animation-delay: 32s;
+  animation-fill-mode: forwards;
+}
+
+#capture-41 {
+  animation: capture 1s ease-out;
+  animation-delay: 32.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-42 {
+  animation: capture 1s ease-out;
+  animation-delay: 33.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-43 {
+  animation: capture 1s ease-out;
+  animation-delay: 34.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-44 {
+  animation: capture 1s ease-out;
+  animation-delay: 35.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-45 {
+  animation: capture 1s ease-out;
+  animation-delay: 36s;
+  animation-fill-mode: forwards;
+}
+
+#capture-46 {
+  animation: capture 1s ease-out;
+  animation-delay: 36.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-47 {
+  animation: capture 1s ease-out;
+  animation-delay: 37.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-48 {
+  animation: capture 1s ease-out;
+  animation-delay: 38.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-49 {
+  animation: capture 1s ease-out;
+  animation-delay: 39.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-50 {
+  animation: capture 1s ease-out;
+  animation-delay: 40s;
+  animation-fill-mode: forwards;
+}
+
+#capture-51 {
+  animation: capture 1s ease-out;
+  animation-delay: 40.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-52 {
+  animation: capture 1s ease-out;
+  animation-delay: 41.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-53 {
+  animation: capture 1s ease-out;
+  animation-delay: 42.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-54 {
+  animation: capture 1s ease-out;
+  animation-delay: 43.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-55 {
+  animation: capture 1s ease-out;
+  animation-delay: 44s;
+  animation-fill-mode: forwards;
+}
+
+#capture-56 {
+  animation: capture 1s ease-out;
+  animation-delay: 44.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-57 {
+  animation: capture 1s ease-out;
+  animation-delay: 45.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-58 {
+  animation: capture 1s ease-out;
+  animation-delay: 46.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-59 {
+  animation: capture 1s ease-out;
+  animation-delay: 47.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-60 {
+  animation: capture 1s ease-out;
+  animation-delay: 48s;
+  animation-fill-mode: forwards;
+}
+
+#capture-61 {
+  animation: capture 1s ease-out;
+  animation-delay: 48.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-62 {
+  animation: capture 1s ease-out;
+  animation-delay: 49.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-63 {
+  animation: capture 1s ease-out;
+  animation-delay: 50.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-64 {
+  animation: capture 1s ease-out;
+  animation-delay: 51.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-65 {
+  animation: capture 1s ease-out;
+  animation-delay: 52s;
+  animation-fill-mode: forwards;
+}
+
+#capture-66 {
+  animation: capture 1s ease-out;
+  animation-delay: 52.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-67 {
+  animation: capture 1s ease-out;
+  animation-delay: 53.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-68 {
+  animation: capture 1s ease-out;
+  animation-delay: 54.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-69 {
+  animation: capture 1s ease-out;
+  animation-delay: 55.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-70 {
+  animation: capture 1s ease-out;
+  animation-delay: 56s;
+  animation-fill-mode: forwards;
+}
+
+#capture-71 {
+  animation: capture 1s ease-out;
+  animation-delay: 56.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-72 {
+  animation: capture 1s ease-out;
+  animation-delay: 57.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-73 {
+  animation: capture 1s ease-out;
+  animation-delay: 58.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-74 {
+  animation: capture 1s ease-out;
+  animation-delay: 59.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-75 {
+  animation: capture 1s ease-out;
+  animation-delay: 60s;
+  animation-fill-mode: forwards;
+}
+
+#capture-76 {
+  animation: capture 1s ease-out;
+  animation-delay: 60.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-77 {
+  animation: capture 1s ease-out;
+  animation-delay: 61.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-78 {
+  animation: capture 1s ease-out;
+  animation-delay: 62.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-79 {
+  animation: capture 1s ease-out;
+  animation-delay: 63.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-80 {
+  animation: capture 1s ease-out;
+  animation-delay: 64s;
+  animation-fill-mode: forwards;
+}
+
+#capture-81 {
+  animation: capture 1s ease-out;
+  animation-delay: 64.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-82 {
+  animation: capture 1s ease-out;
+  animation-delay: 65.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-83 {
+  animation: capture 1s ease-out;
+  animation-delay: 66.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-84 {
+  animation: capture 1s ease-out;
+  animation-delay: 67.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-85 {
+  animation: capture 1s ease-out;
+  animation-delay: 68s;
+  animation-fill-mode: forwards;
+}
+
+#capture-86 {
+  animation: capture 1s ease-out;
+  animation-delay: 68.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-87 {
+  animation: capture 1s ease-out;
+  animation-delay: 69.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-88 {
+  animation: capture 1s ease-out;
+  animation-delay: 70.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-89 {
+  animation: capture 1s ease-out;
+  animation-delay: 71.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-90 {
+  animation: capture 1s ease-out;
+  animation-delay: 72s;
+  animation-fill-mode: forwards;
+}
+
+#capture-91 {
+  animation: capture 1s ease-out;
+  animation-delay: 72.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-92 {
+  animation: capture 1s ease-out;
+  animation-delay: 73.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-93 {
+  animation: capture 1s ease-out;
+  animation-delay: 74.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-94 {
+  animation: capture 1s ease-out;
+  animation-delay: 75.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-95 {
+  animation: capture 1s ease-out;
+  animation-delay: 76s;
+  animation-fill-mode: forwards;
+}
+
+#capture-96 {
+  animation: capture 1s ease-out;
+  animation-delay: 76.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-97 {
+  animation: capture 1s ease-out;
+  animation-delay: 77.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-98 {
+  animation: capture 1s ease-out;
+  animation-delay: 78.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-99 {
+  animation: capture 1s ease-out;
+  animation-delay: 79.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-100 {
+  animation: capture 1s ease-out;
+  animation-delay: 80s;
+  animation-fill-mode: forwards;
+}
+
+#capture-101 {
+  animation: capture 1s ease-out;
+  animation-delay: 80.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-102 {
+  animation: capture 1s ease-out;
+  animation-delay: 81.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-103 {
+  animation: capture 1s ease-out;
+  animation-delay: 82.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-104 {
+  animation: capture 1s ease-out;
+  animation-delay: 83.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-105 {
+  animation: capture 1s ease-out;
+  animation-delay: 84s;
+  animation-fill-mode: forwards;
+}
+
+#capture-106 {
+  animation: capture 1s ease-out;
+  animation-delay: 84.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-107 {
+  animation: capture 1s ease-out;
+  animation-delay: 85.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-108 {
+  animation: capture 1s ease-out;
+  animation-delay: 86.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-109 {
+  animation: capture 1s ease-out;
+  animation-delay: 87.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-110 {
+  animation: capture 1s ease-out;
+  animation-delay: 88s;
+  animation-fill-mode: forwards;
+}
+
+#capture-111 {
+  animation: capture 1s ease-out;
+  animation-delay: 88.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-112 {
+  animation: capture 1s ease-out;
+  animation-delay: 89.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-113 {
+  animation: capture 1s ease-out;
+  animation-delay: 90.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-114 {
+  animation: capture 1s ease-out;
+  animation-delay: 91.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-115 {
+  animation: capture 1s ease-out;
+  animation-delay: 92s;
+  animation-fill-mode: forwards;
+}
+
+#capture-116 {
+  animation: capture 1s ease-out;
+  animation-delay: 92.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-117 {
+  animation: capture 1s ease-out;
+  animation-delay: 93.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-118 {
+  animation: capture 1s ease-out;
+  animation-delay: 94.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-119 {
+  animation: capture 1s ease-out;
+  animation-delay: 95.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-120 {
+  animation: capture 1s ease-out;
+  animation-delay: 96s;
+  animation-fill-mode: forwards;
+}
+
+#capture-121 {
+  animation: capture 1s ease-out;
+  animation-delay: 96.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-122 {
+  animation: capture 1s ease-out;
+  animation-delay: 97.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-123 {
+  animation: capture 1s ease-out;
+  animation-delay: 98.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-124 {
+  animation: capture 1s ease-out;
+  animation-delay: 99.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-125 {
+  animation: capture 1s ease-out;
+  animation-delay: 100s;
+  animation-fill-mode: forwards;
+}
+
+#capture-126 {
+  animation: capture 1s ease-out;
+  animation-delay: 100.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-127 {
+  animation: capture 1s ease-out;
+  animation-delay: 101.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-128 {
+  animation: capture 1s ease-out;
+  animation-delay: 102.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-129 {
+  animation: capture 1s ease-out;
+  animation-delay: 103.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-130 {
+  animation: capture 1s ease-out;
+  animation-delay: 104s;
+  animation-fill-mode: forwards;
+}
+
+#capture-131 {
+  animation: capture 1s ease-out;
+  animation-delay: 104.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-132 {
+  animation: capture 1s ease-out;
+  animation-delay: 105.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-133 {
+  animation: capture 1s ease-out;
+  animation-delay: 106.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-134 {
+  animation: capture 1s ease-out;
+  animation-delay: 107.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-135 {
+  animation: capture 1s ease-out;
+  animation-delay: 108s;
+  animation-fill-mode: forwards;
+}
+
+#capture-136 {
+  animation: capture 1s ease-out;
+  animation-delay: 108.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-137 {
+  animation: capture 1s ease-out;
+  animation-delay: 109.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-138 {
+  animation: capture 1s ease-out;
+  animation-delay: 110.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-139 {
+  animation: capture 1s ease-out;
+  animation-delay: 111.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-140 {
+  animation: capture 1s ease-out;
+  animation-delay: 112s;
+  animation-fill-mode: forwards;
+}
+
+#capture-141 {
+  animation: capture 1s ease-out;
+  animation-delay: 112.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-142 {
+  animation: capture 1s ease-out;
+  animation-delay: 113.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-143 {
+  animation: capture 1s ease-out;
+  animation-delay: 114.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-144 {
+  animation: capture 1s ease-out;
+  animation-delay: 115.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-145 {
+  animation: capture 1s ease-out;
+  animation-delay: 116s;
+  animation-fill-mode: forwards;
+}
+
+#capture-146 {
+  animation: capture 1s ease-out;
+  animation-delay: 116.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-147 {
+  animation: capture 1s ease-out;
+  animation-delay: 117.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-148 {
+  animation: capture 1s ease-out;
+  animation-delay: 118.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-149 {
+  animation: capture 1s ease-out;
+  animation-delay: 119.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-150 {
+  animation: capture 1s ease-out;
+  animation-delay: 120s;
+  animation-fill-mode: forwards;
+}
+
+#capture-151 {
+  animation: capture 1s ease-out;
+  animation-delay: 120.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-152 {
+  animation: capture 1s ease-out;
+  animation-delay: 121.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-153 {
+  animation: capture 1s ease-out;
+  animation-delay: 122.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-154 {
+  animation: capture 1s ease-out;
+  animation-delay: 123.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-155 {
+  animation: capture 1s ease-out;
+  animation-delay: 124s;
+  animation-fill-mode: forwards;
+}
+
+#capture-156 {
+  animation: capture 1s ease-out;
+  animation-delay: 124.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-157 {
+  animation: capture 1s ease-out;
+  animation-delay: 125.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-158 {
+  animation: capture 1s ease-out;
+  animation-delay: 126.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-159 {
+  animation: capture 1s ease-out;
+  animation-delay: 127.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-160 {
+  animation: capture 1s ease-out;
+  animation-delay: 128s;
+  animation-fill-mode: forwards;
+}
+
+#capture-161 {
+  animation: capture 1s ease-out;
+  animation-delay: 128.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-162 {
+  animation: capture 1s ease-out;
+  animation-delay: 129.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-163 {
+  animation: capture 1s ease-out;
+  animation-delay: 130.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-164 {
+  animation: capture 1s ease-out;
+  animation-delay: 131.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-165 {
+  animation: capture 1s ease-out;
+  animation-delay: 132s;
+  animation-fill-mode: forwards;
+}
+
+#capture-166 {
+  animation: capture 1s ease-out;
+  animation-delay: 132.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-167 {
+  animation: capture 1s ease-out;
+  animation-delay: 133.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-168 {
+  animation: capture 1s ease-out;
+  animation-delay: 134.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-169 {
+  animation: capture 1s ease-out;
+  animation-delay: 135.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-170 {
+  animation: capture 1s ease-out;
+  animation-delay: 136s;
+  animation-fill-mode: forwards;
+}
+
+#capture-171 {
+  animation: capture 1s ease-out;
+  animation-delay: 136.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-172 {
+  animation: capture 1s ease-out;
+  animation-delay: 137.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-173 {
+  animation: capture 1s ease-out;
+  animation-delay: 138.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-174 {
+  animation: capture 1s ease-out;
+  animation-delay: 139.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-175 {
+  animation: capture 1s ease-out;
+  animation-delay: 140s;
+  animation-fill-mode: forwards;
+}
+
+#capture-176 {
+  animation: capture 1s ease-out;
+  animation-delay: 140.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-177 {
+  animation: capture 1s ease-out;
+  animation-delay: 141.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-178 {
+  animation: capture 1s ease-out;
+  animation-delay: 142.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-179 {
+  animation: capture 1s ease-out;
+  animation-delay: 143.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-180 {
+  animation: capture 1s ease-out;
+  animation-delay: 144s;
+  animation-fill-mode: forwards;
+}
+
+#capture-181 {
+  animation: capture 1s ease-out;
+  animation-delay: 144.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-182 {
+  animation: capture 1s ease-out;
+  animation-delay: 145.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-183 {
+  animation: capture 1s ease-out;
+  animation-delay: 146.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-184 {
+  animation: capture 1s ease-out;
+  animation-delay: 147.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-185 {
+  animation: capture 1s ease-out;
+  animation-delay: 148s;
+  animation-fill-mode: forwards;
+}
+
+#capture-186 {
+  animation: capture 1s ease-out;
+  animation-delay: 148.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-187 {
+  animation: capture 1s ease-out;
+  animation-delay: 149.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-188 {
+  animation: capture 1s ease-out;
+  animation-delay: 150.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-189 {
+  animation: capture 1s ease-out;
+  animation-delay: 151.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-190 {
+  animation: capture 1s ease-out;
+  animation-delay: 152s;
+  animation-fill-mode: forwards;
+}
+
+#capture-191 {
+  animation: capture 1s ease-out;
+  animation-delay: 152.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-192 {
+  animation: capture 1s ease-out;
+  animation-delay: 153.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-193 {
+  animation: capture 1s ease-out;
+  animation-delay: 154.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-194 {
+  animation: capture 1s ease-out;
+  animation-delay: 155.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-195 {
+  animation: capture 1s ease-out;
+  animation-delay: 156s;
+  animation-fill-mode: forwards;
+}
+
+#capture-196 {
+  animation: capture 1s ease-out;
+  animation-delay: 156.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-197 {
+  animation: capture 1s ease-out;
+  animation-delay: 157.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-198 {
+  animation: capture 1s ease-out;
+  animation-delay: 158.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-199 {
+  animation: capture 1s ease-out;
+  animation-delay: 159.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-200 {
+  animation: capture 1s ease-out;
+  animation-delay: 160s;
+  animation-fill-mode: forwards;
+}
+
+#capture-201 {
+  animation: capture 1s ease-out;
+  animation-delay: 160.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-202 {
+  animation: capture 1s ease-out;
+  animation-delay: 161.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-203 {
+  animation: capture 1s ease-out;
+  animation-delay: 162.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-204 {
+  animation: capture 1s ease-out;
+  animation-delay: 163.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-205 {
+  animation: capture 1s ease-out;
+  animation-delay: 164s;
+  animation-fill-mode: forwards;
+}
+
+#capture-206 {
+  animation: capture 1s ease-out;
+  animation-delay: 164.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-207 {
+  animation: capture 1s ease-out;
+  animation-delay: 165.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-208 {
+  animation: capture 1s ease-out;
+  animation-delay: 166.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-209 {
+  animation: capture 1s ease-out;
+  animation-delay: 167.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-210 {
+  animation: capture 1s ease-out;
+  animation-delay: 168s;
+  animation-fill-mode: forwards;
+}
+
+#capture-211 {
+  animation: capture 1s ease-out;
+  animation-delay: 168.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-212 {
+  animation: capture 1s ease-out;
+  animation-delay: 169.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-213 {
+  animation: capture 1s ease-out;
+  animation-delay: 170.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-214 {
+  animation: capture 1s ease-out;
+  animation-delay: 171.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-215 {
+  animation: capture 1s ease-out;
+  animation-delay: 172s;
+  animation-fill-mode: forwards;
+}
+
+#capture-216 {
+  animation: capture 1s ease-out;
+  animation-delay: 172.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-217 {
+  animation: capture 1s ease-out;
+  animation-delay: 173.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-218 {
+  animation: capture 1s ease-out;
+  animation-delay: 174.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-219 {
+  animation: capture 1s ease-out;
+  animation-delay: 175.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-220 {
+  animation: capture 1s ease-out;
+  animation-delay: 176s;
+  animation-fill-mode: forwards;
+}
+
+#capture-221 {
+  animation: capture 1s ease-out;
+  animation-delay: 176.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-222 {
+  animation: capture 1s ease-out;
+  animation-delay: 177.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-223 {
+  animation: capture 1s ease-out;
+  animation-delay: 178.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-224 {
+  animation: capture 1s ease-out;
+  animation-delay: 179.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-225 {
+  animation: capture 1s ease-out;
+  animation-delay: 180s;
+  animation-fill-mode: forwards;
+}
+
+#capture-226 {
+  animation: capture 1s ease-out;
+  animation-delay: 180.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-227 {
+  animation: capture 1s ease-out;
+  animation-delay: 181.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-228 {
+  animation: capture 1s ease-out;
+  animation-delay: 182.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-229 {
+  animation: capture 1s ease-out;
+  animation-delay: 183.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-230 {
+  animation: capture 1s ease-out;
+  animation-delay: 184s;
+  animation-fill-mode: forwards;
+}
+
+#capture-231 {
+  animation: capture 1s ease-out;
+  animation-delay: 184.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-232 {
+  animation: capture 1s ease-out;
+  animation-delay: 185.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-233 {
+  animation: capture 1s ease-out;
+  animation-delay: 186.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-234 {
+  animation: capture 1s ease-out;
+  animation-delay: 187.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-235 {
+  animation: capture 1s ease-out;
+  animation-delay: 188s;
+  animation-fill-mode: forwards;
+}
+
+#capture-236 {
+  animation: capture 1s ease-out;
+  animation-delay: 188.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-237 {
+  animation: capture 1s ease-out;
+  animation-delay: 189.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-238 {
+  animation: capture 1s ease-out;
+  animation-delay: 190.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-239 {
+  animation: capture 1s ease-out;
+  animation-delay: 191.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-240 {
+  animation: capture 1s ease-out;
+  animation-delay: 192s;
+  animation-fill-mode: forwards;
+}
+
+#capture-241 {
+  animation: capture 1s ease-out;
+  animation-delay: 192.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-242 {
+  animation: capture 1s ease-out;
+  animation-delay: 193.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-243 {
+  animation: capture 1s ease-out;
+  animation-delay: 194.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-244 {
+  animation: capture 1s ease-out;
+  animation-delay: 195.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-245 {
+  animation: capture 1s ease-out;
+  animation-delay: 196s;
+  animation-fill-mode: forwards;
+}
+
+#capture-246 {
+  animation: capture 1s ease-out;
+  animation-delay: 196.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-247 {
+  animation: capture 1s ease-out;
+  animation-delay: 197.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-248 {
+  animation: capture 1s ease-out;
+  animation-delay: 198.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-249 {
+  animation: capture 1s ease-out;
+  animation-delay: 199.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-250 {
+  animation: capture 1s ease-out;
+  animation-delay: 200s;
+  animation-fill-mode: forwards;
+}
+
+#capture-251 {
+  animation: capture 1s ease-out;
+  animation-delay: 200.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-252 {
+  animation: capture 1s ease-out;
+  animation-delay: 201.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-253 {
+  animation: capture 1s ease-out;
+  animation-delay: 202.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-254 {
+  animation: capture 1s ease-out;
+  animation-delay: 203.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-255 {
+  animation: capture 1s ease-out;
+  animation-delay: 204s;
+  animation-fill-mode: forwards;
+}
+
+#capture-256 {
+  animation: capture 1s ease-out;
+  animation-delay: 204.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-257 {
+  animation: capture 1s ease-out;
+  animation-delay: 205.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-258 {
+  animation: capture 1s ease-out;
+  animation-delay: 206.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-259 {
+  animation: capture 1s ease-out;
+  animation-delay: 207.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-260 {
+  animation: capture 1s ease-out;
+  animation-delay: 208s;
+  animation-fill-mode: forwards;
+}
+
+#capture-261 {
+  animation: capture 1s ease-out;
+  animation-delay: 208.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-262 {
+  animation: capture 1s ease-out;
+  animation-delay: 209.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-263 {
+  animation: capture 1s ease-out;
+  animation-delay: 210.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-264 {
+  animation: capture 1s ease-out;
+  animation-delay: 211.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-265 {
+  animation: capture 1s ease-out;
+  animation-delay: 212s;
+  animation-fill-mode: forwards;
+}
+
+#capture-266 {
+  animation: capture 1s ease-out;
+  animation-delay: 212.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-267 {
+  animation: capture 1s ease-out;
+  animation-delay: 213.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-268 {
+  animation: capture 1s ease-out;
+  animation-delay: 214.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-269 {
+  animation: capture 1s ease-out;
+  animation-delay: 215.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-270 {
+  animation: capture 1s ease-out;
+  animation-delay: 216s;
+  animation-fill-mode: forwards;
+}
+
+#capture-271 {
+  animation: capture 1s ease-out;
+  animation-delay: 216.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-272 {
+  animation: capture 1s ease-out;
+  animation-delay: 217.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-273 {
+  animation: capture 1s ease-out;
+  animation-delay: 218.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-274 {
+  animation: capture 1s ease-out;
+  animation-delay: 219.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-275 {
+  animation: capture 1s ease-out;
+  animation-delay: 220s;
+  animation-fill-mode: forwards;
+}
+
+#capture-276 {
+  animation: capture 1s ease-out;
+  animation-delay: 220.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-277 {
+  animation: capture 1s ease-out;
+  animation-delay: 221.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-278 {
+  animation: capture 1s ease-out;
+  animation-delay: 222.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-279 {
+  animation: capture 1s ease-out;
+  animation-delay: 223.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-280 {
+  animation: capture 1s ease-out;
+  animation-delay: 224s;
+  animation-fill-mode: forwards;
+}
+
+#capture-281 {
+  animation: capture 1s ease-out;
+  animation-delay: 224.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-282 {
+  animation: capture 1s ease-out;
+  animation-delay: 225.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-283 {
+  animation: capture 1s ease-out;
+  animation-delay: 226.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-284 {
+  animation: capture 1s ease-out;
+  animation-delay: 227.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-285 {
+  animation: capture 1s ease-out;
+  animation-delay: 228s;
+  animation-fill-mode: forwards;
+}
+
+#capture-286 {
+  animation: capture 1s ease-out;
+  animation-delay: 228.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-287 {
+  animation: capture 1s ease-out;
+  animation-delay: 229.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-288 {
+  animation: capture 1s ease-out;
+  animation-delay: 230.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-289 {
+  animation: capture 1s ease-out;
+  animation-delay: 231.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-290 {
+  animation: capture 1s ease-out;
+  animation-delay: 232s;
+  animation-fill-mode: forwards;
+}
+
+#capture-291 {
+  animation: capture 1s ease-out;
+  animation-delay: 232.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-292 {
+  animation: capture 1s ease-out;
+  animation-delay: 233.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-293 {
+  animation: capture 1s ease-out;
+  animation-delay: 234.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-294 {
+  animation: capture 1s ease-out;
+  animation-delay: 235.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-295 {
+  animation: capture 1s ease-out;
+  animation-delay: 236s;
+  animation-fill-mode: forwards;
+}
+
+#capture-296 {
+  animation: capture 1s ease-out;
+  animation-delay: 236.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-297 {
+  animation: capture 1s ease-out;
+  animation-delay: 237.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-298 {
+  animation: capture 1s ease-out;
+  animation-delay: 238.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-299 {
+  animation: capture 1s ease-out;
+  animation-delay: 239.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-300 {
+  animation: capture 1s ease-out;
+  animation-delay: 240s;
+  animation-fill-mode: forwards;
+}
+
+#capture-301 {
+  animation: capture 1s ease-out;
+  animation-delay: 240.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-302 {
+  animation: capture 1s ease-out;
+  animation-delay: 241.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-303 {
+  animation: capture 1s ease-out;
+  animation-delay: 242.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-304 {
+  animation: capture 1s ease-out;
+  animation-delay: 243.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-305 {
+  animation: capture 1s ease-out;
+  animation-delay: 244s;
+  animation-fill-mode: forwards;
+}
+
+#capture-306 {
+  animation: capture 1s ease-out;
+  animation-delay: 244.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-307 {
+  animation: capture 1s ease-out;
+  animation-delay: 245.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-308 {
+  animation: capture 1s ease-out;
+  animation-delay: 246.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-309 {
+  animation: capture 1s ease-out;
+  animation-delay: 247.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-310 {
+  animation: capture 1s ease-out;
+  animation-delay: 248s;
+  animation-fill-mode: forwards;
+}
+
+#capture-311 {
+  animation: capture 1s ease-out;
+  animation-delay: 248.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-312 {
+  animation: capture 1s ease-out;
+  animation-delay: 249.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-313 {
+  animation: capture 1s ease-out;
+  animation-delay: 250.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-314 {
+  animation: capture 1s ease-out;
+  animation-delay: 251.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-315 {
+  animation: capture 1s ease-out;
+  animation-delay: 252s;
+  animation-fill-mode: forwards;
+}
+
+#capture-316 {
+  animation: capture 1s ease-out;
+  animation-delay: 252.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-317 {
+  animation: capture 1s ease-out;
+  animation-delay: 253.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-318 {
+  animation: capture 1s ease-out;
+  animation-delay: 254.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-319 {
+  animation: capture 1s ease-out;
+  animation-delay: 255.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-320 {
+  animation: capture 1s ease-out;
+  animation-delay: 256s;
+  animation-fill-mode: forwards;
+}
+
+#capture-321 {
+  animation: capture 1s ease-out;
+  animation-delay: 256.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-322 {
+  animation: capture 1s ease-out;
+  animation-delay: 257.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-323 {
+  animation: capture 1s ease-out;
+  animation-delay: 258.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-324 {
+  animation: capture 1s ease-out;
+  animation-delay: 259.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-325 {
+  animation: capture 1s ease-out;
+  animation-delay: 260s;
+  animation-fill-mode: forwards;
+}
+
+#capture-326 {
+  animation: capture 1s ease-out;
+  animation-delay: 260.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-327 {
+  animation: capture 1s ease-out;
+  animation-delay: 261.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-328 {
+  animation: capture 1s ease-out;
+  animation-delay: 262.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-329 {
+  animation: capture 1s ease-out;
+  animation-delay: 263.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-330 {
+  animation: capture 1s ease-out;
+  animation-delay: 264s;
+  animation-fill-mode: forwards;
+}
+
+#capture-331 {
+  animation: capture 1s ease-out;
+  animation-delay: 264.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-332 {
+  animation: capture 1s ease-out;
+  animation-delay: 265.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-333 {
+  animation: capture 1s ease-out;
+  animation-delay: 266.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-334 {
+  animation: capture 1s ease-out;
+  animation-delay: 267.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-335 {
+  animation: capture 1s ease-out;
+  animation-delay: 268s;
+  animation-fill-mode: forwards;
+}
+
+#capture-336 {
+  animation: capture 1s ease-out;
+  animation-delay: 268.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-337 {
+  animation: capture 1s ease-out;
+  animation-delay: 269.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-338 {
+  animation: capture 1s ease-out;
+  animation-delay: 270.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-339 {
+  animation: capture 1s ease-out;
+  animation-delay: 271.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-340 {
+  animation: capture 1s ease-out;
+  animation-delay: 272s;
+  animation-fill-mode: forwards;
+}
+
+#capture-341 {
+  animation: capture 1s ease-out;
+  animation-delay: 272.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-342 {
+  animation: capture 1s ease-out;
+  animation-delay: 273.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-343 {
+  animation: capture 1s ease-out;
+  animation-delay: 274.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-344 {
+  animation: capture 1s ease-out;
+  animation-delay: 275.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-345 {
+  animation: capture 1s ease-out;
+  animation-delay: 276s;
+  animation-fill-mode: forwards;
+}
+
+#capture-346 {
+  animation: capture 1s ease-out;
+  animation-delay: 276.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-347 {
+  animation: capture 1s ease-out;
+  animation-delay: 277.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-348 {
+  animation: capture 1s ease-out;
+  animation-delay: 278.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-349 {
+  animation: capture 1s ease-out;
+  animation-delay: 279.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-350 {
+  animation: capture 1s ease-out;
+  animation-delay: 280s;
+  animation-fill-mode: forwards;
+}
+
+#capture-351 {
+  animation: capture 1s ease-out;
+  animation-delay: 280.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-352 {
+  animation: capture 1s ease-out;
+  animation-delay: 281.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-353 {
+  animation: capture 1s ease-out;
+  animation-delay: 282.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-354 {
+  animation: capture 1s ease-out;
+  animation-delay: 283.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-355 {
+  animation: capture 1s ease-out;
+  animation-delay: 284s;
+  animation-fill-mode: forwards;
+}
+
+#capture-356 {
+  animation: capture 1s ease-out;
+  animation-delay: 284.8s;
+  animation-fill-mode: forwards;
+}
+
+#capture-357 {
+  animation: capture 1s ease-out;
+  animation-delay: 285.6s;
+  animation-fill-mode: forwards;
+}
+
+#capture-358 {
+  animation: capture 1s ease-out;
+  animation-delay: 286.4s;
+  animation-fill-mode: forwards;
+}
+
+#capture-359 {
+  animation: capture 1s ease-out;
+  animation-delay: 287.2s;
+  animation-fill-mode: forwards;
+}
+
+#capture-360 {
+  animation: capture 1s ease-out;
+  animation-delay: 288s;
+  animation-fill-mode: forwards;
+}
+
+#capture-361 {
+  animation: capture 1s ease-out;
+  animation-delay: 288.8s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes capture {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes play {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
