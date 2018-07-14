@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css?family=Inconsolata:400,700');
+
+$piece-base-size: 2.2em;
+$play-time: .8; /* in seconds */
+
+html, body {
+  height: 100%;
+  font-family: Inconsolata, Courier, monospace;
+  font-size: 10px;
+}
+
+/* Pieces for coloured board */
+.piece {
+  position: absolute;
+  height: $piece-base-size - .1em;
+  width: $piece-base-size - .1em;
+  border-radius:50px;
+  box-shadow: 0 2px 2px rgba(0,0,0,.6);
+  z-index: 1000;
+  text-align: center;
+  
+  p {
+    margin-top:0.45em;
+    font-size: 11px;
+  }
+  
+  &.piece-black {
+    background: radial-gradient(circle at 60%, #aaa , #000 , #000 );
+    color: #fff;
+  }
+  
+  &.piece-white {
+    background: radial-gradient(circle at 60%, #fff , #aaa , #aaa );
+    color: #000;
+  }
+  
+  &.letter {
+    background-color: burlywood;
+    box-shadow: none;  
+    p {
+      font-size:13px;
+      font-weight:bold;
+      margin-top: 2px;
+    }
+  }
+}
+
+/* End pieces for coloured board */
+
+/* Pieces for white board */
+.piece-simple {
+  position: absolute;
+  border-radius:50px;
+  text-align: center;
+  z-index: 1000;
+  
+  p {
+    font-size: 11px;
+  }
+  
+  &.piece-simple-black {
+    height:$piece-base-size - .1em;
+    width:$piece-base-size - .1em;
+    background-color: #000;
+    color: #fff;
+
+    p {
+      margin-top:0.46em;
+    }
+  }
+  
+  &.piece-simple-white {
+    height: $piece-base-size - .2em;
+    width: $piece-base-size - .2em;
+    background-color: #fff;
+    border:1px solid #000;
+    color: #000;
+
+    p {
+      margin-top:0.32em;
+    }
+  }
+  
+  &.letter {
+    height: $piece-base-size - .1em;
+    width: $piece-base-size - .1em;
+    background-color: #fff;
+    box-shadow: none;  
+    p {
+      font-size:13px;
+      font-weight:bold;
+      margin-top: 2px;
+    }
+  }
+}
+  
+/* End pieces for white board */
+
+.board-19 {
+  width: 39.7em;
+  height: 39.7em;
+  background-size: $piece-base-size $piece-base-size, $piece-base-size $piece-base-size, 13.2em 13.2em;
+  border-style: solid;
+  border-width: 1.5em;
+  
+  $row: 19;
+  $j: 0;
+  $row-base: -1em;
+  @while $row > 0 {
+    .row-#{$row} {
+      top: $row-base + ($j * $piece-base-size)
+    }
+    $row: $row - 1;
+    $j: $j + 1;
+  }
+}
+
+.board-13 {
+  width: 26.5em;
+  height: 26.5em;
+  background-size: $piece-base-size $piece-base-size, $piece-base-size $piece-base-size, 13.2em 13.2em;
+  border-style: solid;
+  border-width: 1.5em;
+
+  $row: 13;
+  $j: 0;
+  $row-base: -1em;
+  @while $row > 0 {
+    .row-#{$row} {
+      top: $row-base + ($j * $piece-base-size)
+    }
+    $row: $row - 1;
+    $j: $j + 1;
+  }
+
+}
+
+.board-9 {
+  width: 17.7em;
+  height: 17.7em;
+  background-size: $piece-base-size $piece-base-size, $piece-base-size $piece-base-size, 8.8em 8.8em;
+  border-style: solid;
+  border-width: 1.5em;
+  
+  $row: 9;
+  $j: 0;
+  $row-base: -1em;
+  @while $row > 0 {
+    .row-#{$row} {
+      top: $row-base + ($j * $piece-base-size)
+    }
+    $row: $row - 1;
+    $j: $j + 1;
+  }
+}
+
+.board-default {
+  position: relative;
+  background-color: burlywood;
+  background-image: linear-gradient(black 0.1em, transparent 0), linear-gradient(90deg, black 0.1em, transparent 0), radial-gradient(#000000 0.3em, rgba(0, 0, 0, 0) 0%);
+  border-color: burlywood;
+  box-shadow: 0 5px 10px rgba(0,0,0,.7);
+  margin: 0 auto;
+}
+
+.board-coordinates {
+  border-width: 3.5em;
+}
+
+.board-white {
+  position: relative;
+  background-color: white;
+  background-image: linear-gradient(black 0.1em, transparent 0), linear-gradient(90deg, black 0.1em, transparent 0), radial-gradient(#000000 0.3em, rgba(0, 0, 0, 0) 0%);
+  border-color: white;
+  margin: 0 auto;
+}
+
+.col-coordinates-top {
+  position:absolute;
+  width:110%;
+  margin-top: -2.8em;
+  margin-left: -1.4em;
+  
+  span {
+    margin-left:1.2em;
+  }
+}
+
+.col-coordinates-bottom {
+  position:absolute;
+  width:110%;
+  margin-top: 41.5em;
+  margin-left: -1.4em;
+  
+  span {
+    margin-left:1.2em;
+  }
+}
+
+.row-coordinates-left {
+  position: absolute;
+  margin-left:-2.8em;
+  margin-top: -1.5em;
+  
+  p {
+    padding-top:.1em; 
+  }
+}
+
+.row-coordinates-right {
+  position: absolute;
+  margin-left:41.5em;
+  margin-top: -1.5em;
+  
+  p {
+    text-align:right;
+    padding-top:.1em; 
+  }
+}
+
+
+$go-letters-list: a b c d e f g h j k l m n o p q r s t;
+$k: 0;
+$col-base: -1em;
+@each $letter in $go-letters-list {
+  .col-#{$letter} {
+      left: $col-base + ($k * $piece-base-size)
+  }
+  $k: $k + 1;
+}
+
+@for $i from 1 through 361 {
+  #play-#{$i} {
+    animation: play .1s step-end;
+    animation-delay: $play-time * $i * 1s; 
+    animation-fill-mode: backwards;
+  }
+}
+
+@for $i from 1 through 361 {
+  #capture-#{$i} {
+    animation: capture 1s ease-out;
+    animation-delay: $play-time * $i * 1s; 
+    animation-fill-mode: forwards;
+  }
+}
+
+@keyframes capture {
+  0% {
+    opacity: 1;
+  }
+  
+  100% {
+    opacity: 0;
+  }
+  
+}
+
+@keyframes play {
+  0% {
+    opacity: 0;
+  }
+  
+  100% {
+    opacity: 1;
+  }
+  
+}
+
