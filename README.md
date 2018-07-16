@@ -133,7 +133,7 @@ Drawing pieces and letters on a board:
   <div class="piece letter row-1 col-b"><p>8</p></div>
 </div>
 ```
-![Example above](https://github.com/ricalamino/go-bootstrap/tree/master/examples/assets/example_1.png "Result of the above code")
+![Example above](https://github.com/ricalamino/go-bootstrap/blob/master/examples/assets/example_1.png "Result of the above code")
 
 
 
