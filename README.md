@@ -1,7 +1,13 @@
 # go-bootstrap
 Go bootstrap with board, pieces, plays and captures.
 
+## TL;DR
+
+Copy `index.html` and `css/style.css` to your own project and have fun!
+
 ## CodePen original project
+
+In order to play around and try some features got to Code Pen original source: 
 
 [Click here](https://codepen.io/ricalamino/pen/zawmdL) to see the original project on Code Pen.
 
@@ -9,14 +15,14 @@ Go bootstrap with board, pieces, plays and captures.
 
 ### Boards
 
-To draw a simple board without coordinates just use the following html:
+Drawing a board without coordinates:
 
 ```HTML
 <div class="board-default board-19">
 </div>
 ```
 
-To draw a simple board *with* coordinates just use the following html:
+Drawing a board _with_ coordinates:
 
 ```HTML
 <div class="board-default board-19 board-coordinates">
@@ -107,6 +113,27 @@ To draw a simple board *with* coordinates just use the following html:
 </div>
 ```
 
+### Pieces and letters
+
+Drawing pieces and letters on a board:
+
+```HTML
+<div class="board-default board-19">
+  <div class="piece piece-black row-6 col-a"><p>180</p></div> <!-- Numbered piece -->
+  <div class="piece piece-white row-5 col-c"><p>&Delta;</p></div> <!-- Symbol piece -->
+  <div class="piece piece-white row-5 col-e"></div> <!-- Not numbered piece -->
+
+  <div class="piece letter row-6 col-h"><p>a</p></div>
+  <div class="piece letter row-6 col-j"><p>&Delta;</p></div>
+  <div class="piece letter row-7 col-j"><p>h</p></div>
+  
+  <div class="piece letter row-1 col-a"><p>5</p></div>
+  <div class="piece letter row-2 col-a"><p>6</p></div>
+  <div class="piece letter row-2 col-b"><p>7</p></div>
+  <div class="piece letter row-1 col-b"><p>8</p></div>
+</div>
+```
+![Example above](https://github.com/ricalamino/go-bootstrap/tree/master/examples/assets/example_1.png "Result of the above code")
 
 
 
