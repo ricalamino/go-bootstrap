@@ -7,18 +7,29 @@ Copy `index.html` and `css/style.css` to your own project and have fun!
 
 ## CodePen original project
 
-In order to play around and try some features got to Code Pen original source: 
-
-[Click here](https://codepen.io/ricalamino/pen/zawmdL) to see the original project on Code Pen.
+In order to play around and try some features go to [Code Pen original project of Go bootstrap](https://codepen.io/ricalamino/pen/zawmdL): 
 
 ## Examples
 
 ### Boards
 
-Drawing a board without coordinates:
+Drawing board without coordinates:
 
+#### 19 x 19
 ```HTML
 <div class="board-default board-19">
+</div>
+```
+
+#### 13 x 13
+```HTML
+<div class="board-default board-13">
+</div>
+```
+
+#### 9 x 9
+```HTML
+<div class="board-default board-9">
 </div>
 ```
 
